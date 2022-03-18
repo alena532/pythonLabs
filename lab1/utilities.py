@@ -1,4 +1,4 @@
-from statistics import median
+
 
 
 def occurences(text_dict):
@@ -10,29 +10,39 @@ def occurences(text_dict):
                 list_words[word] += 1
             else:
                 list_words[word] = 1
+
     return list_words
 
 
 def average_num(text_dict):
-    counter_sentences = 0
+    counter_sentences = len(text_dict)
     total_words = 0
 
     for key in text_dict:
-        counter_sentences += 1
         total_words += len(text_dict[key])
 
     return (total_words / counter_sentences)
 
 
 def median_num(text_dict):
-    med_num = []
+    counter_sentences = len(text_dict)
+    total_words = []
 
     for key in text_dict:
-        med_num.append(len(text_dict[key]))
+        list=text_dict[key]
+        total_words.append(len(list))
 
-    return (median(med_num))
-    print(f"Median number of words in sentences:{median(med_num)}")
-    return
+    total_words=sorted(total_words)
+
+    if counter_sentences % 2 == 0:
+        idx_begin = int(counter_sentences/2)
+        idx_end = int(idx_begin-1)
+        res = (total_words[idx_begin]+total_words[idx_end])/2
+    else:
+
+        res = total_words[int(counter_sentences/2)]
+
+    return res
 
 
 def top_ngrams(text_dict, K, N):
@@ -43,7 +53,6 @@ def top_ngrams(text_dict, K, N):
             for letter in el:
                 tokens.append(letter)
             sequences = [tokens[i:] for i in range(N)]
-
     nGram_list = list(zip(*sequences))
     nGrams_dic = {}
 
@@ -56,4 +65,5 @@ def top_ngrams(text_dict, K, N):
 
     print(f"Top-{K} most frequently repeated letter {N}-grams:")
 
-    return (dict(sorted(nGrams_dic.items(), key=lambda item: item[1], reverse=True)))
+    return nGrams_dic
+
