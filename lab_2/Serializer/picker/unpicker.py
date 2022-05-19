@@ -1,3 +1,4 @@
+import builtins
 import types
 import importlib
 
@@ -44,6 +45,7 @@ class Unpicker:
             argdefs=attrs["__defaults__"],
             closure=attrs["__closure__"],
         )
+        obj.__globals__['math']=__import__('math')
         return obj
 
     def unpack_builtinfunction(self, obj_dict):

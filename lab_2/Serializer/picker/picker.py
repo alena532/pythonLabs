@@ -1,3 +1,4 @@
+import math
 import types
 import importlib
 import builtins
@@ -83,6 +84,9 @@ class Picker:
 
     def pack(self, obj):
         obj_dict = {}
+
+        print(math.sin(5))
+
 
         if type(obj) in (int, float, str, bool):
             if type(obj) == int:

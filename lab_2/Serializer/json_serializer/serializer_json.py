@@ -23,9 +23,11 @@ class JsonSerializer:
         with open(self.path, "r") as f:
             obj_dict = parser.load_parser(f)
         obj = self.unpicker.unpack(obj_dict)
+
         return obj
 
     def loads(self, obj_str: str):
         obj_dict = parser.loads_parser(obj_str)
         obj = self.unpicker.unpack(obj_dict)
+
         return obj

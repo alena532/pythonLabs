@@ -1,24 +1,17 @@
+import math
+
 from Serializer.Factory import factory
 from lab2 import Factory
 
-class A:
-    def h(self):
-        print("In class A")
-
-
-class Person(A):
-    def func(self):
-        print('Hello')
 
 
 
 def print_hi(name):
-    a=Person()
-    ab=Factory("str")
-    pars=ab.create_serializer('json')
-    x=pars.dumps(a)
-    e=pars.loads(x)
-    e.h()
+    factory=Factory('text.json')
+    factory=factory.create_serializer('json')
+    x=factory.dumps(5)
+    c=factory.loads(x)
+    c()
 
 
 # Press the green button in the gutter to run the script.
