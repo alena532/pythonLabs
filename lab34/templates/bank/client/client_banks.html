@@ -1,0 +1,34 @@
+{% extends 'bank/client/client_base.html' %}
+{% block content %}
+    <p>Banks which register in system</p>
+    {% for bank in all_banks %}
+        <p>{{ bank.name }}  {{ bank.address }}</p>
+    {% endfor %}
+    {% if client_banks.count != 0 %}
+         <p>Banks where you log in</p>
+        {% for bank in banks %}
+        <p>{{ bank.address }}</p>
+        <p>{{ bank.name }}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% if client_banks.count !=  all_banks.count%}
+    <p>You can apply for registration in this banks:</p>
+    {% for bank in all_banks %}
+        {% if bank in client_banks %}
+        {% else %}
+            <div class="list-group">
+  <a href="{% url 'bank_application' bank.id %}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+      <div>
+        <h6 class="mb-0">{{ bank.name }}</h6>
+      </div>
+    </div>
+  </a>
+</div>
+        {% endif %}
+    {% endfor %}
+
+ {% endif %}
+
+{% endblock %}

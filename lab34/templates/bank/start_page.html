@@ -1,0 +1,17 @@
+{% extends 'bank/base.html' %}
+
+{% block content %}
+
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" {{"../img/bank.png"}} >
+    <h1 class="display-5 fw-bold">Bank application</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Welcome to bank application.Here you can register in many banks for openning and closing bank accounts </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+       <a href="{% url 'sign_up' %}" class="btn btn-primary my-2">Register</a>
+          <a href="{% url 'login' %}" class="btn btn-secondary my-2">Login</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
